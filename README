@@ -1,2 +1,7 @@
 Formation Ansible Initiation du 04 au 06 septembre 2023
 =======================================================
+
+## Vérifications de l'inventaire
+
+ansible-inventory --graph
+ansible-inventory --list
