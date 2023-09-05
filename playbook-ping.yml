@@ -1,7 +1,9 @@
 ---
 - name: Premier playbook
   hosts: all
+  gather_facts: false
+
   tasks:
-    - name: Appel au module ping
+    - name: Test de connexion avec les cibles
       ansible.builtin.ping:
         data: VU ?!
