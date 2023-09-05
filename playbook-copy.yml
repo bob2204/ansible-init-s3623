@@ -1,0 +1,25 @@
+---
+- name: Playbook copy
+  hosts: all
+
+  tasks:
+    - name: Copie d'un fichier avec des droits limités
+      ansible.builtin.copy:
+        src: datas/data.txt
+        dest: /tmp/data.txt
+        mode: 0600
+        owner: bob
+      become: true
+
+    - name: Ajout d'une ligne
+      lineinfile:
+        dest: /tmp/data.txt
+        line: Formation Ansible
+      become: true
+
+    - name: Ajout d'une ligne
+      lineinfile:
+        dest: /tmp/data.txt
+        regex: Formation Ansible
+        line: Formation Docker
+      become: true
