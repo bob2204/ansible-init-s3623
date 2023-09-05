@@ -1,0 +1,7 @@
+---
+- name: Premier playbook
+  hosts: all
+  tasks:
+    - name: Appel au module ping
+      ansible.builtin.ping:
+        data: VU ?!
