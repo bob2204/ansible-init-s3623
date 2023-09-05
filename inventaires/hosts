@@ -1,8 +1,8 @@
 [debian]
-debycli ansible_host=192.168.56.200
+debycli
 
 [centos]
-centoscli ansible_host=192.168.56.210
+centoscli
 
 [linux:children]
 debian
