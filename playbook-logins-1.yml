@@ -1,0 +1,15 @@
+---
+- name: Micro-TP n°4
+  hosts: localhost
+
+  tasks:
+    - name: Inclusion du fichiers vars/logins.yml
+      include_vars:
+        file: logins.yml
+  
+    - name: Parcours du tableau logins
+      debug:
+        msg: "{{ item }}"
+      loop: "{{ logins }}"
+      loop_control:
+        label: "ligne..."
