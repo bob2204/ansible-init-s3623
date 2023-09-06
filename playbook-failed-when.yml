@@ -1,0 +1,14 @@
+---
+- name: Clause when
+  hosts: all
+
+  tasks:
+    - name: Tâche I
+      debug:
+        msg: "Tout va bien"
+      failed_when: inventory_hostname == 'centoscli'
+
+    - name: Importation de tâches
+      import_tasks:
+        file: playbook-failed-when-inc.yml
+      failed_when: inventory_hostname == 'centoscli'

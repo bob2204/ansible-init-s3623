@@ -1,0 +1,9 @@
+---
+- name: Clause changed_when
+  hosts: all
+
+  tasks:
+    - name: Clause changed_when
+      debug:
+        msg: "On change ou pas !"
+      changed_when: ok_var is defined

@@ -1,0 +1,23 @@
+---
+- name: Blcok rescue always
+  hosts: all
+
+  tasks:
+    - block:
+      - name: Tâche en échec
+        debug:
+          msg: "Glop, glop"
+        failed_when: ansible_distribution == 'CentOS'
+      rescue:
+      - name: Tâche de secours
+        debug:
+          msg: "Au secours !"
+        failed_when: ansible_distribution == 'CentOS'
+      always:
+      - name: Tâche éternelle
+        debug:
+          msg: "Tâche éternelle"
+
+    - name: Tâche de suite
+      debug:
+        msg: "On continue..."

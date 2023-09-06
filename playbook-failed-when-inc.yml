@@ -1,0 +1,7 @@
+- name: Tâche I
+  debug:
+    msg: "Tâche I"
+
+- name: Tâche II
+  debug:
+    msg: "Tâche II"

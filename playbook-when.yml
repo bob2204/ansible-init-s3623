@@ -1,0 +1,35 @@
+---
+- name: Clause when
+  hosts: all
+
+  tasks:
+    - name: Clause when
+      debug:
+        msg: "Glop, Glop !"
+      when: ansible_distribution == 'Debian'
+
+    - name: Clause when
+      debug:
+        msg: "Glop, Glop !"
+      when:
+        - ansible_distribution == 'Debian'
+        - ansible_architecture == 'x86_64'
+
+    - name: Clause when
+      debug:
+        msg: "Glop, Glop !"
+      when:
+        - ansible_distribution == 'Debian' or ansible_architetcture == 'x86_64'
+
+    - name: Clause when
+      debug:
+        msg: "Glop, Glop !"
+      when:
+        - ansible_distribution in ('Debian','Ubuntu')
+
+    - name: Clause when
+      debug:
+        msg: "Glop, Glop !"
+      when:
+        - ansible_distribution|lower in ('debian','ubuntu')
+

@@ -1,0 +1,8 @@
+---
+- name: Liste des variables et autres faits
+  hosts: localhost
+
+  tasks:
+    - name: print all variables
+      debug:
+        var=vars

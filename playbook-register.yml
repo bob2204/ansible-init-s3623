@@ -1,0 +1,12 @@
+---
+- name: Clause register
+  hosts: debycli
+
+  tasks:
+    - name: Contenu du répertoire /tmp
+      command: ls /tmp
+      register: result
+
+    - name: Affichage de result
+      debug:
+        var: result.stdout_lines[-1]

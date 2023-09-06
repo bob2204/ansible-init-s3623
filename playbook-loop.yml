@@ -1,0 +1,23 @@
+---
+- name: Clause loop
+  hosts: all
+
+  tasks:
+    - name: On boucle sur un, deux, trois
+      debug:
+        msg: "{{ item }}"
+      loop:
+        - un
+        - deux
+        - trois
+
+    - name: Liste des interfaces réseau d'une cible
+      debug:
+        msg: "{{ idx+1 }}-{{ iface }}"
+      loop: "{{ ansible_interfaces|sort }}"
+      loop_control:
+        loop_var: iface
+        index_var: idx
+        label: ligne...
+        pause: 2
+      when: iface != 'lo'

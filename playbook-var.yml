@@ -1,0 +1,42 @@
+---
+- name: Variables Ansible
+  hosts: all
+
+  vars:
+    login: zoé
+
+  tasks:
+    - name: Affichage d'une chaîne de caractère
+      debug:
+        msg: "Message affiché"
+
+    - name: Affichage du contenu d'une variable
+      debug:
+        var: login
+
+    - name: Affichage du contenu d'une variable
+      debug:
+        msg: "Valeur de la variable login: {{ login | default('curt') }}"
+
+    - name: Affichage du contenu d'une variable
+      debug:
+        msg: "Valeur de la variable login: {{ login }}"
+      when: login is defined
+
+    - name: Inclusion du fichier vars/vars_1.yml
+      include_vars:
+        file: vars_1.yml
+
+    - name: Affichage du contenu d'une variable
+      debug:
+        msg: "Valeur de la variable login: {{ login }}"
+      vars:
+        login: curt
+
+    - name: Extra-variable
+      debug:
+        msg: "Extra-var stage: {{ stage }}"
+
+    - name: Accès aux variable d'environnement -> lookup env
+      debug:
+        msg: "Variable PATH: {{ lookup('env','PATH') }}"

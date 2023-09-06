@@ -1,0 +1,14 @@
+---
+- name: Bloc block...when
+  hosts: all
+
+  tasks:
+    - block:
+      - name: Tâche I
+        debug:
+          msg: "Glop, Glop !"
+
+      - name: Tâche II
+        debug:
+          msg: "Glop, Glop !"
+      when: ansible_distribution == 'Debian'

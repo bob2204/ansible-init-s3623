@@ -1,0 +1,12 @@
+---
+- name: Register et failed_when
+  hosts: localhost
+  gather_facts: false
+
+  tasks:
+    - name: Grep et command
+      command: "grep {{ string }} /etc/passwd"
+      register: result
+      failed_when: result.rc == 2
+      changed_when: false
+

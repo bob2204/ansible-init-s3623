@@ -1,0 +1,37 @@
+---
+- name: Les faits
+  hosts: debycli
+  environment:
+    stagiaire: Ilyes
+
+  tasks:
+    - name: Valeur du fait ansible_processor_count
+      debug:
+        msg: "PATH: {{ ansible_env.PATH }}"
+
+    - name: Surcharge de la variable PATH dans le fichier .profile
+      lineinfile:
+        dest: .profile
+        line: 'export stage=ansible'
+
+    - name: Appel explicite au module setup
+      setup:
+        gather_subset: env
+
+    - name: Modification de l'environnement d'une tâche
+      debug:
+        msg: "Stagiaire: {{ ansible_env.stagiaire }}"
+
+    - name: Création d'un fait
+      set_fact:
+        cours: anglais
+        cacheable: true
+      tags: never
+
+- name: Acte II
+  hosts: debycli
+
+  tasks:
+    - name: Accès au fait cours
+      debug:
+        msg: "Cours: {{ cours }}"

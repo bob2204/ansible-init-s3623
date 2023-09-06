@@ -1,0 +1,34 @@
+---
+- name: Les handlers
+  hosts: all
+
+  tasks:
+    - name: Copie d'un fichier sur les machines Debian
+      copy:
+        src: test.cfg
+        dest: /tmp
+      when: ansible_distribution == 'Debian'
+      notify:
+        - add_version
+
+    - name: Tâche à suivre
+      debug:
+        msg: "On continue..."
+
+    - name: Initialisation d'une variable pour stopper le handler
+      set_fact:
+        handler: plouf
+        cacheable: true
+
+  handlers:
+    - name: Affichage de la variable handler
+      debug:
+        var: handler
+      listen: add_version
+
+    - name: Ajouter la version de la distribution à la fin du fichier
+      lineinfile:
+        dest: /tmp/test.cfg
+        line: "{{ ansible_distribution_major_version }}"
+      listen: add_version
+      when: handler != 'plouf'
