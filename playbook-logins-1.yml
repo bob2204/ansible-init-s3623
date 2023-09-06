@@ -9,7 +9,7 @@
   
     - name: Parcours du tableau logins
       debug:
-        msg: "{{ item }}"
+        msg: "{{ item.login }}"
       loop: "{{ logins }}"
       loop_control:
         label: "ligne..."
